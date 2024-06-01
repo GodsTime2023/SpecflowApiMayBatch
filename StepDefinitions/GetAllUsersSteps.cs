@@ -1,28 +1,25 @@
-using SpecflowApiMayBatch.Modules;
-using TechTalk.SpecFlow.Assist;
-
 namespace SpecflowApiMayBatch.StepDefinitions
 {
     [Binding]
     public sealed class GetAllUsersSteps : ApiRequest
     {
-        string endpoint;
+        string getAllUsersEndPoint;
         AllUsersResponseModel actual;
 
         [Given(@"I have a resource")]
         public void GivenIAmAResource()
         {
-            endpoint = GetAllUsersEndpoint;
+            getAllUsersEndPoint = GetAllUsersEndpoint;
         }
 
         [When(@"I request all users info")]
         public void WhenIRequestAllUsersInfo()
         {
-            var response = GetRequest<AllUsersResponseModel>(endpoint, RestSharp.Method.Get);
+            var response = GetRequest<AllUsersResponseModel>(getAllUsersEndPoint, RestSharp.Method.Get);
             actual = response.DeserializeData<AllUsersResponseModel>();
         }
 
-        [Then(@"The response code is (.*)")]
+        [Then(@"The response code to retrieve all users is (.*)")]
         public void ThenTheResponseCodeIs(int expectedResponse)
         {
             Assert.That((int)response.StatusCode, Is.EqualTo(expectedResponse));

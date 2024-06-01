@@ -1,8 +1,4 @@
-﻿using APIUnitTestMayBatch.Modules;
-using NUnit.Framework;
-using SpecflowApiMayBatch.ApiActions;
-
-namespace APIUnitTestMayBatch.TestModule
+﻿namespace APIUnitTestMayBatch.TestModule
 {
     public class ApiPostRequest : ApiRequest
     {

@@ -75,11 +75,11 @@ namespace SpecflowApiMayBatch.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Retrieve all user info")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("Api")]
         public virtual void RetrieveAllUserInfo()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "Api"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve all user info", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I request all users info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.Then("The response code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The response code to retrieve all users is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "page",
@@ -143,6 +143,65 @@ this.ScenarioInitialize(scenarioInfo);
                             "https://reqres.in/img/faces/8-image.jpg"});
 #line 8
  testRunner.And("the response body includes the following:", ((string)(null)), table1, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create new user")]
+        [NUnit.Framework.CategoryAttribute("Api")]
+        [NUnit.Framework.CategoryAttribute("Post")]
+        public virtual void CreateNewUser()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Api",
+                    "Post"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 15
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 16
+ testRunner.Given("I have a create new user enpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "job"});
+                table2.AddRow(new string[] {
+                            "Joseph",
+                            "leader"});
+#line 17
+ testRunner.When("I request to create a new user with the following body:", ((string)(null)), table2, "When ");
+#line hidden
+#line 20
+ testRunner.Then("The response code for newly created user is 201", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "job"});
+                table3.AddRow(new string[] {
+                            "Joseph",
+                            "leader"});
+#line 21
+ testRunner.And("the response body includes the following", ((string)(null)), table3, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

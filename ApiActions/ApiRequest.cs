@@ -1,6 +1,4 @@
-﻿using RestSharp;
-
-namespace SpecflowApiMayBatch.ApiActions
+﻿namespace SpecflowApiMayBatch.ApiActions
 {
     public class ApiRequest
     {

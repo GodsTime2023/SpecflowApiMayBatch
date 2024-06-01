@@ -1,8 +1,4 @@
-﻿using APIUnitTestMayBatch.Modules;
-using RestSharp;
-using System.Net;
-
-namespace SpecflowApiMayBatch.Support.Helpers
+﻿namespace SpecflowApiMayBatch.Support.Helpers
 {
     public class ApiHelper
     {
@@ -57,6 +53,12 @@ namespace SpecflowApiMayBatch.Support.Helpers
             var Response = await Client.ExecuteAsync<T>(Request);
             StatusCode = Response.StatusCode;
             return (Response.Data!, StatusCode);
+        }
+
+        public T DeserializeData<T>()
+        {
+            var data = Client.Execute<T>(Request).Data;
+            return data;
         }
     }
 }

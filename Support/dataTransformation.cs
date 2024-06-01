@@ -14,5 +14,11 @@
         {
             return table.CreateSet<TableModel>().ToList();
         }
+
+        [StepArgumentTransformation]
+        public CreatNewRequestUserTableModel NewUser(Table table)
+        {
+            return table.CreateInstance<CreatNewRequestUserTableModel>();
+        }
     }
 }
