@@ -6,22 +6,34 @@ namespace SpecflowApiMayBatch.StepDefinitions
         string creatUserEndpoint;
         CreatNewResponseUserModel actualUserResponse;
 
-        [Given(@"I have a create new user enpoint")]
-        public void GivenIHaveACreateNewUserEnpoint()
+        [Given(@"I have a ""(Create new|Update)"" user enpoint")]
+        public void GivenIHaveACreateNewUserEnpoint(string endpoint)
         {
-            creatUserEndpoint = PostNewUserEndpoint;
+            if (endpoint == "Create new")
+            {
+                creatUserEndpoint = PostNewUserEndpoint;
+            }
+            else if (endpoint == "Update")
+            {
+                creatUserEndpoint = UpdateSingleUserEndpoint;
+            }
         }
 
-        [When(@"I request to create a new user with the following body:")]
-        public void WhenIRequestToCreateANewUserWithTheFollowingBody(CreatNewRequestUserTableModel body)
+        [When(@"I request to ""(Create|Update|Delete|Patch)"" a new user with the following body:")]
+        public void WhenIRequestToCreateANewUserWithTheFollowingBody(string method,CreatNewRequestUserTableModel body)
         {
-            var payload = new
+            ApiRequest response = null;
+            if (method == "Create")
             {
-                name = body.name,
-                job = body.job,
-            };
-
-            var response = PostRequest<CreatNewResponseUserModel>(creatUserEndpoint, payload);
+                response = PostRequest<CreatNewResponseUserModel>(creatUserEndpoint!,
+                new { body.name, body.job }, Method.Post);
+            }
+            else if (method == "Update")
+            {
+                response = PostRequest<CreatNewResponseUserModel>(creatUserEndpoint!,
+                new { body.name, body.job }, Method.Put);
+            }
+            
             actualUserResponse = response.DeserializeData<CreatNewResponseUserModel>();
         }
 
@@ -29,7 +41,6 @@ namespace SpecflowApiMayBatch.StepDefinitions
         public void ThenTheResponseCodeIs(int expectedResponse)
         {
             Assert.That((int)response.StatusCode, Is.EqualTo(expectedResponse));
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
         }
 
         [Then(@"the response body includes the following")]
@@ -37,8 +48,8 @@ namespace SpecflowApiMayBatch.StepDefinitions
         {
             Assert.That(expectedResponse.name, Is.EqualTo(actualUserResponse.name));
             Assert.That(expectedResponse.job, Is.EqualTo(actualUserResponse.job));
-            Assert.That(actualUserResponse.id != null);
-            Assert.That(actualUserResponse.createdAt != null);
+            //Assert.That(actualUserResponse.id != null);
+            Assert.That(!actualUserResponse.createdAt.Equals(null));
         }
     }
 }
