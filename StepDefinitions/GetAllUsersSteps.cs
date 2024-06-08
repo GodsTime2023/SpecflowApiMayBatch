@@ -15,7 +15,9 @@ namespace SpecflowApiMayBatch.StepDefinitions
         [When(@"I request all users info")]
         public void WhenIRequestAllUsersInfo()
         {
-            var response = GetRequest<AllUsersResponseModel>(getAllUsersEndPoint, RestSharp.Method.Get);
+            string flag = "UserList";
+            var response = GetRequest<AllUsersResponseModel>(flag,
+                getAllUsersEndPoint, RestSharp.Method.Get);
             actual = response.DeserializeData<AllUsersResponseModel>();
         }
 

@@ -9,11 +9,13 @@
         public RestResponse response;
 
         private string baseUrl { get; set; } = "https://reqres.in/";
+        private string baseUrl2 { get; set; } = "https://automationexercise.com/";
         public string GetAllUsersEndpoint = "api/users?page=2";
         public string GetSingleUserEndpoint = "api/users/2";
         public string GetSingleUserNotfoundEndpoint = "api/users/23";
         public string PostNewUserEndpoint = "api/users";
         public string UpdateSingleUserEndpoint = "api/users/2";
+        public string GetProductList = "api/productsList";
 
         public async Task<RestResponse> SendRequest(
             string endPoint, 
@@ -26,11 +28,15 @@
             return response;
         }
 
-        public ApiRequest GetRequest<T>(
+        public ApiRequest GetRequest<T>(string flag,
             string endPoint, 
             Method method = Method.Get)
         {
-            client = new RestClient(baseUrl);
+            client = new RestClient(
+                flag == "UserList" 
+                ? baseUrl
+                : flag == "ProductList"
+                ? baseUrl2 : null!);
             request = new RestRequest(endPoint, method);
             response = client.Execute<T>(request);
             return this;

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecflowApiMayBatch.Features
+namespace SpecflowApiMayBatch.Features.GetUserList
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,22 +20,22 @@ namespace SpecflowApiMayBatch.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("GetAllUsers")]
-    public partial class GetAllUsersFeature
+    [NUnit.Framework.DescriptionAttribute("GetListOfUsers")]
+    public partial class GetListOfUsersFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "GetAllUsers.feature"
+#line 1 "GetListOfUsers.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetAllUsers", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/GetUserList", "GetListOfUsers", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -111,7 +111,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
  testRunner.Then("The response code to retrieve all users is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "page",
                             "per_page",
                             "total",
@@ -121,7 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "first_name",
                             "last_name",
                             "avatar"});
-                table1.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "2",
                             "6",
                             "12",
@@ -131,7 +131,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Michael",
                             "Lawson",
                             "https://reqres.in/img/faces/7-image.jpg"});
-                table1.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "2",
                             "6",
                             "12",
@@ -142,23 +142,23 @@ this.ScenarioInitialize(scenarioInfo);
                             "Ferguson",
                             "https://reqres.in/img/faces/8-image.jpg"});
 #line 8
- testRunner.And("the response body includes the following:", ((string)(null)), table1, "And ");
+ testRunner.And("the response body includes the following:", ((string)(null)), table8, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create new user")]
+        [NUnit.Framework.DescriptionAttribute("Update existing user")]
         [NUnit.Framework.CategoryAttribute("Api")]
         [NUnit.Framework.CategoryAttribute("Post")]
-        public virtual void CreateNewUser()
+        public virtual void UpdateExistingUser()
         {
             string[] tagsOfScenario = new string[] {
                     "Api",
                     "Post"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update existing user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -180,158 +180,28 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 16
- testRunner.Given("I have a \"Create new\" user enpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "name",
-                            "job"});
-                table2.AddRow(new string[] {
-                            "Joseph",
-                            "leader"});
-#line 17
- testRunner.When("I request to \"Create\" a new user with the following body:", ((string)(null)), table2, "When ");
-#line hidden
-#line 20
- testRunner.Then("The response code for newly created user is 201", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                            "name",
-                            "job"});
-                table3.AddRow(new string[] {
-                            "Joseph",
-                            "leader"});
-#line 21
- testRunner.And("the response body includes the following", ((string)(null)), table3, "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create new user with scenario outline example")]
-        [NUnit.Framework.CategoryAttribute("Api")]
-        [NUnit.Framework.CategoryAttribute("Post")]
-        [NUnit.Framework.TestCaseAttribute("Joseph", "leader", null)]
-        [NUnit.Framework.TestCaseAttribute("Joe", "teacher", null)]
-        [NUnit.Framework.TestCaseAttribute("Kay", "student", null)]
-        [NUnit.Framework.TestCaseAttribute("Nath", "leader", null)]
-        [NUnit.Framework.TestCaseAttribute("Ade", "professor", null)]
-        public virtual void CreateNewUserWithScenarioOutlineExample(string title, string profesion, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "Api",
-                    "Post"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("title", title);
-            argumentsOfScenario.Add("profesion", profesion);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new user with scenario outline example", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 27
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 28
- testRunner.Given("I have a \"Create new\" user enpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "name",
-                            "job"});
-                table4.AddRow(new string[] {
-                            string.Format("{0}", title),
-                            string.Format("{0}", profesion)});
-#line 29
- testRunner.When("I request to \"Create\" a new user with the following body:", ((string)(null)), table4, "When ");
-#line hidden
-#line 32
- testRunner.Then("The response code for newly created user is 201", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                            "name",
-                            "job"});
-                table5.AddRow(new string[] {
-                            string.Format("{0}", title),
-                            string.Format("{0}", profesion)});
-#line 33
- testRunner.And("the response body includes the following", ((string)(null)), table5, "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Update existing user")]
-        [NUnit.Framework.CategoryAttribute("Api")]
-        [NUnit.Framework.CategoryAttribute("Post")]
-        public virtual void UpdateExistingUser()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "Api",
-                    "Post"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update existing user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 46
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 47
  testRunner.Given("I have a \"Update\" user enpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "name",
                             "job"});
-                table6.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "Joseph",
                             "teacher"});
-#line 48
- testRunner.When("I request to \"Update\" a new user with the following body:", ((string)(null)), table6, "When ");
+#line 17
+ testRunner.When("I request to \"Update\" a new user with the following body:", ((string)(null)), table9, "When ");
 #line hidden
-#line 51
+#line 20
  testRunner.Then("The response code for newly created user is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "name",
                             "job"});
-                table7.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Joseph",
                             "teacher"});
-#line 52
- testRunner.And("the response body includes the following", ((string)(null)), table7, "And ");
+#line 21
+ testRunner.And("the response body includes the following", ((string)(null)), table10, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

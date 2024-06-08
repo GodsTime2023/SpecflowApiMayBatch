@@ -79,8 +79,9 @@
         [Test]
         public void GetAllUsersUsingApiRequestMethod2()
         {
+            string flag = "UserList";
             var res = 
-                GetRequest<AllUsersResponseModel>(GetAllUsersEndpoint)
+                GetRequest<AllUsersResponseModel>(flag, GetAllUsersEndpoint)
                 .DeserializeData<AllUsersResponseModel>();
 
 
@@ -110,8 +111,9 @@
         [Test]
         public void GetSingleUsersUsingApiRequestMethod()
         {
+            string flag = "UserList";
             var res =
-                    GetRequest<SingleUserModel>(GetSingleUserEndpoint)
+                    GetRequest<SingleUserModel>(flag, GetSingleUserEndpoint)
                     .DeserializeData<SingleUserModel>();
 
             Assert.That(response.StatusCode.ToString(),
