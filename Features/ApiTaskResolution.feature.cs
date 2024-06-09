@@ -136,6 +136,85 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create user")]
+        public virtual void CreateUser()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 17
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 18
+ testRunner.Given("I have new user product resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "email",
+                            "password",
+                            "title",
+                            "birth_date",
+                            "birth_month",
+                            "birth_year",
+                            "firstname",
+                            "lastname",
+                            "company",
+                            "address1",
+                            "address2",
+                            "country",
+                            "zipcode",
+                            "state",
+                            "city",
+                            "mobile_number"});
+                table2.AddRow(new string[] {
+                            "John Stone",
+                            "john{0}@testuser.com",
+                            "Password001!",
+                            "Mr",
+                            "01",
+                            "01",
+                            "1940",
+                            "John",
+                            "Stone",
+                            "ztec",
+                            "01 adress",
+                            "lostock",
+                            "United Kingdom",
+                            "Bl2 8rd",
+                            "bolton",
+                            "manchester",
+                            "07890987655"});
+#line 19
+ testRunner.When("I request to create new user with the following parameters:", ((string)(null)), table2, "When ");
+#line hidden
+#line 22
+ testRunner.Then("the response code is 201", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 23
+ testRunner.And("The response message is \'User created!\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

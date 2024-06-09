@@ -4,7 +4,9 @@ namespace SpecflowApiMayBatch.StepDefinitions
     public class ApiTaskResolutionStepDefinitions : ApiRequest
     {
         string getAllProductsEndPoint;
+        string createNewUserEndPoint;
         ProductListResponseModel actual;
+        CreateUserResponseModel newUserActualResponse;
 
         [Given(@"I have a product resource")]
         public void GivenIHaveAProductResource()
@@ -54,6 +56,48 @@ namespace SpecflowApiMayBatch.StepDefinitions
             //    Assert.That(tableList.ElementAt(i).category,
             //        Is.EqualTo(actual.products.ElementAt(i).category.category));
             //}
+        }
+
+        [Given(@"I have new user product resource")]
+        public void GivenIHaveNewUserProductResource()
+        {
+            createNewUserEndPoint = CreateNewUser;
+        }
+
+        [When(@"I request to create new user with the following parameters:")]
+        public void WhenIRequestToCreateNewUserWithTheFollowingParameters(Table table)
+        {
+            var param = new Dictionary<string, string>();
+
+            foreach (var key in table.Header)
+            {
+                var value =
+                    table.Rows[0][key];
+                var updatedEmail = key == "email" 
+                    ? string.Format(value, new Random().Next(1, 999))
+                    : key;
+                var updatedValue = key == "email" ? updatedEmail : value;
+                param.Add(key, updatedValue);
+            }
+
+            string flag = "CreateNewUserAutomationExcercise";
+           var response = PostRequest<CreateUserResponseModel>(
+                    flag,
+                    createNewUserEndPoint, null, param, RestSharp.Method.Post);
+            newUserActualResponse = response.DeserializeData<CreateUserResponseModel>();
+        }
+
+        [Then(@"the response code is (.*)")]
+        public void ThenTheResponseCodeIs(int expectedResponseCode)
+        {
+            newUserActualResponse = JsonConvert.DeserializeObject<CreateUserResponseModel>(response.Content);
+            Assert.That((int)newUserActualResponse.responseCode, Is.EqualTo(expectedResponseCode));
+        }
+
+        [Then(@"The response message is '([^']*)'")]
+        public void ThenTheResponseMessageIs(string expectedMessage)
+        {
+            Assert.That(newUserActualResponse.message, Is.EqualTo(expectedMessage));
         }
     }
 }

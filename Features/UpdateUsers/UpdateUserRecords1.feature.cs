@@ -107,26 +107,26 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
  testRunner.Given("I have a \"Update\" user enpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
-                            "name",
-                            "job"});
-                table11.AddRow(new string[] {
-                            "Joseph",
-                            "teacher"});
-#line 7
- testRunner.When("I request to \"Update\" a new user with the following body:", ((string)(null)), table11, "When ");
-#line hidden
-#line 10
- testRunner.Then("The response code for newly created user is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
                 TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "name",
                             "job"});
                 table12.AddRow(new string[] {
                             "Joseph",
                             "teacher"});
+#line 7
+ testRunner.When("I request to \"Update\" a new user with the following body:", ((string)(null)), table12, "When ");
+#line hidden
+#line 10
+ testRunner.Then("The response code for newly created user is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "job"});
+                table13.AddRow(new string[] {
+                            "Joseph",
+                            "teacher"});
 #line 11
- testRunner.And("the response body includes the following", ((string)(null)), table12, "And ");
+ testRunner.And("the response body includes the following", ((string)(null)), table13, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -16,6 +16,7 @@
         public string PostNewUserEndpoint = "api/users";
         public string UpdateSingleUserEndpoint = "api/users/2";
         public string GetProductList = "api/productsList";
+        public string CreateNewUser = "api/createAccount";
 
         public async Task<RestResponse> SendRequest(
             string endPoint, 
@@ -42,14 +43,29 @@
             return this;
         }
 
-        public ApiRequest PostRequest<T>(
+        public ApiRequest PostRequest<T>(string flag,
             string endPoint,
             object payload,
+            Dictionary<string, string> param = null,
             Method method = Method.Post)
         {
-            client = new RestClient(baseUrl);
+            client = new RestClient(flag == "CreatUserReqres"
+                ? baseUrl
+                : flag == "CreateNewUserAutomationExcercise"
+                ? baseUrl2 : null!);
             request = new RestRequest(endPoint, method);
-            request.AddBody(payload);
+            if (payload != null)
+            {
+                request.AddBody(payload);
+            }
+
+            if (param != null)
+            {
+                foreach (var key in param)
+                {
+                    request.AddParameter(key.Key, key.Value);
+                }
+            }
             response = client.Execute<T>(request);
             return this;
         }

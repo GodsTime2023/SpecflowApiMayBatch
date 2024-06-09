@@ -25,10 +25,11 @@
             //    name = "morpheus",
             //    job = "leader"
             //};
-
+            string flag = "CreatUserReqres";
             var response =
-                PostRequest<PostResponseModel>(PostNewUserEndpoint,
-                new { name = "morpheus", job = "leader" },
+                PostRequest<PostResponseModel>(
+                    flag, PostNewUserEndpoint,
+                new { name = "morpheus", job = "leader" }, null,
                 RestSharp.Method.Post)
                 .DeserializeData<PostResponseModel>();
 

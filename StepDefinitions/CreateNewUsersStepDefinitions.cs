@@ -22,16 +22,19 @@ namespace SpecflowApiMayBatch.StepDefinitions
         [When(@"I request to ""(Create|Update|Delete|Patch)"" a new user with the following body:")]
         public void WhenIRequestToCreateANewUserWithTheFollowingBody(string method,CreatNewRequestUserTableModel body)
         {
+            string flag = "CreatUserReqres";
             ApiRequest response = null;
             if (method == "Create")
             {
-                response = PostRequest<CreatNewResponseUserModel>(creatUserEndpoint!,
-                new { body.name, body.job }, Method.Post);
+                response = PostRequest<CreatNewResponseUserModel>(
+                   flag, creatUserEndpoint!,
+                new { body.name, body.job }, null, Method.Post);
             }
             else if (method == "Update")
             {
-                response = PostRequest<CreatNewResponseUserModel>(creatUserEndpoint!,
-                new { body.name, body.job }, Method.Put);
+                response = PostRequest<CreatNewResponseUserModel>(
+                    flag, creatUserEndpoint!,
+                new { body.name, body.job }, null, Method.Put);
             }
             
             actualUserResponse = response.DeserializeData<CreatNewResponseUserModel>();
